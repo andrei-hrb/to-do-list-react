@@ -1,28 +1,21 @@
 import { Outlet } from 'react-router-dom'
 import TodoCard from '../components/TodoCard'
+import { useNavigate } from 'react-router-dom'
 
-const Todos = () => {
-  const todos = [
-    {
-      id: 1,
-      title: 'spala vasele',
-      description: 'foloseste fairy',
-    },
-    {
-      id: 2,
-      title: 'citeste cartea',
-      description: 'citeste atent',
-    },
-    {
-      id: 3,
-      title: 'plimba pisica',
-      description: 'nu uita lesa',
-    },
-  ]
+const Todos = ({ todos }) => {
+  const navigate = useNavigate()
 
   return (
     <>
-      <div>Todos</div>
+      <h1 className='font-black mb-3'>Todos</h1>
+      <button
+        className='border p-2 bg-black text-white px-5 mb-5'
+        onClick={() => {
+          navigate('/todos/create')
+        }}
+      >
+        + Create Todo
+      </button>
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>
